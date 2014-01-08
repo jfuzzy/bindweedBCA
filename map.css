@@ -1,0 +1,91 @@
+body { margin:0; padding:0; }
+    #map { position:absolute; top:0; bottom:0; width:100%; z-index: -1}
+
+    .my-legend .legend-title {
+      text-align: left;
+      margin-bottom: 8px;
+      font-weight: bold;
+      font-size: 90%;
+      }
+	.my-legend .legend-message {
+      text-align: left;
+      margin-bottom: 8px;
+      font-weight: normal;
+      font-size: 90%;
+      }
+    .my-legend .legend-scale ul {
+      margin: 0;
+      padding: 0;
+      float: left;
+      list-style: none;
+      }
+    .my-legend .legend-scale ul li {
+      display: block;
+     /*float: left;*/
+      width: 150px;
+      margin-bottom: 6px;
+      text-align: center;
+      font-size: 80%;
+      list-style: none;
+      }
+    .my-legend ul.legend-labels li span {
+      display: block;
+      /*float: left;*/
+      height: 15px;
+      width: 150px;
+      }
+    .my-legend .legend-source {
+      font-size: 70%;
+      color: #999;
+      clear: both;
+      line-height: 1.5;
+      }
+    .my-legend a {
+      color: #777;
+      }
+    
+    #map-ui {
+      position: absolute;
+      top: 115px;
+      left: 10px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      z-index: 100;
+    }
+
+    #map-ui a {
+      font: normal 13px/18px 'Helvetica Neue', Helvetica, sans-serif;
+      background: #FFF;
+      color: #3C4E5A;
+      display: block;
+      margin: 0;
+      padding: 0;
+      border: 1px solid #BBB;
+      border-bottom-width: 0;
+      min-width: 138px;
+      padding: 10px;
+      text-decoration: none;
+    }
+
+    #map-ui a:hover {
+      background: #ECF5FA;
+    }
+
+    #map-ui li:last-child a {
+      border-bottom-width: 1px;
+      -webkit-border-radius: 0 0 3px 3px;
+      border-radius: 0 0 3px 3px;
+    }
+
+    #map-ui li:first-child a {
+      -webkit-border-radius: 3px 3px 0 0;
+      border-radius: 3px 3px 0 0;
+    }
+
+    #map-ui a.active {
+      background: #3887BE;
+      border-color: #3887BE;
+      border-top-color: #FFF;
+      color: #FFF;
+    }
