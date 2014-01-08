@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>Bindweed Biocontrol Agent</title>
+  
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
+  <script src='//api.tiles.mapbox.com/mapbox.js/v1.5.2/mapbox.js'></script>
+  <link href='//api.tiles.mapbox.com/mapbox.js/v1.5.2/mapbox.css' rel='stylesheet' />
+  <link rel="stylesheet" type="text/css" href="map.css">
+</head>
+
+<body>
+  <div id='container'>
+    <ul id='map-ui'></ul>
+  	<div id='map'></div>
+  	<div id='legend-content' style='display: none;'>
+      <div class='my-legend'>
+        <div class='legend-title'>Bindweed Biocontrol Agent Trapping</div>
+        <div class='legend-message'>Hover to see location and amount <br /><br />
+        Counts of Four-spotted moth (<em>Tyta luctusoa</em>), the Bindweed Biocontrol Agent. Males were trapped using pheromone traps. These numbers provide evidence of survival and successful overwintering.</div>
+        <div class='legend-scale'>
+          <ul class='legend-labels'>
+            <li><span style='background:#4e7300;'></span>Release site</li>
+            <li><span style='background:#af292e;'></span>Non-release site</li>
+          </ul>
+        </div>
+        <div class='legend-source'>Source: <a href="#link to source">Jessica Greene and Ed Peachy, Oregon State University</a></div>
+      </div>
+    </div>
+  	<script>
+  	var map = L.mapbox.map('map', 'jfuzzy.gkmn7kjn')
+  		.setView([44.7077, -122.0471], 8)
+  		.addControl(L.mapbox.shareControl());
+
+  	map.legendControl.addLegend(document.getElementById('legend-content').innerHTML);
+    map.legendControl.setPosition('bottomleft');
+
+    var ui = document.getElementById('map-ui');
+
+    addLayer(L.mapbox.tileLayer('jfuzzy.bindweed'), L.mapbox.gridLayer('jfuzzy.bindweed'),'2012', 1);
+    addLayer(L.mapbox.tileLayer('jfuzzy.bindweed2013'), L.mapbox.gridLayer('jfuzzy.bindweed2013'),'2013', 2);
+
+    function addLayer(layer, gridlayer, name, zIndex) {
+      layer
+          .setZIndex(zIndex)
+          .addTo(map);
+      gridlayer
+          .addTo(map);
+      // add the gridControl the active gridlayer
+      var gridControl = L.mapbox.gridControl(gridlayer, {follow: false}).addTo(map);
+      // Create a simple layer switcher that toggles layers on and off.
+      var item = document.createElement('li');
+      var link = document.createElement('a');
+
+      link.href = '#';
+      link.className = 'active';
+      link.innerHTML = name;
+
+      link.onclick = function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+
+          if (map.hasLayer(layer)) {
+              map.removeLayer(layer);
+              map.removeLayer(gridlayer);
+              this.className = '';
+          } else {
+              map.addLayer(layer);
+              map.addLayer(gridlayer);
+              this.className = 'active';
+          }
+      };
+      item.appendChild(link);
+      ui.appendChild(item);
+  }
+  	</script>
+  </div>
+</body>
+</html>
