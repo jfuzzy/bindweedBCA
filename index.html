@@ -5,8 +5,8 @@
 <title>Bindweed Biocontrol Agent</title>
   
   <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
-  <script src='//api.tiles.mapbox.com/mapbox.js/v1.5.2/mapbox.js'></script>
-  <link href='//api.tiles.mapbox.com/mapbox.js/v1.5.2/mapbox.css' rel='stylesheet' />
+  <script src='//api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.js'></script>
+  <link href='//api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.css' rel='stylesheet' />
   <link rel="stylesheet" type="text/css" href="map.css">
 </head>
 
@@ -48,7 +48,7 @@
       gridlayer
           .addTo(map);
       // add the gridControl the active gridlayer
-      var gridControl = L.mapbox.gridControl(gridlayer, {follow: false}).addTo(map);
+      var gridControl = L.mapbox.gridControl(gridlayer, {follow: true}).addTo(map);
       // Create a simple layer switcher that toggles layers on and off.
       var item = document.createElement('li');
       var link = document.createElement('a');
